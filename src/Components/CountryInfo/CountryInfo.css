@@ -1,0 +1,21 @@
+.block {
+    position: relative;
+}
+h1 {
+    margin-left: 20px;
+    margin-bottom: 40px;
+}
+.text {
+    font-weight: bold;
+    margin: 3px 0 3px 20px;
+}
+span {
+    font-weight: normal;
+    padding-left: 10px;
+}
+img {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    width: 200px;
+}
