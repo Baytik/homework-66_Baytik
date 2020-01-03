@@ -9,7 +9,7 @@ class Edit extends Component {
         categories: null,
         title: '',
         content: '',
-        category: ''
+        category: '',
     };
 
     onChange = e => this.setState({[e.target.name]: e.target.value});
