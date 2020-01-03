@@ -52,4 +52,4 @@ class Edit extends Component {
     }
 }
 
-export default withErrorHandler(Edit);
+export default withErrorHandler(Edit, axiosAPI);
