@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import './Edit.css';
 import axiosAPI from "../../axiosAPI";
+import withErrorHandler from "../../HOC/withErrorHandler";
 
 class Edit extends Component {
 
@@ -51,4 +52,4 @@ class Edit extends Component {
     }
 }
 
-export default Edit;
+export default withErrorHandler(Edit);
