@@ -1,4 +1,5 @@
 import React, {Component, Fragment} from "react";
+import Spinner from "../Components/UI/Spinner/Spinner";
 import Modal from "../Components/UI/Modal/Modal";
 
 const withErrorHandler = (WrappedComponent, axios) => {
@@ -8,30 +9,39 @@ const withErrorHandler = (WrappedComponent, axios) => {
 
           this.state = {
               error: null,
+              loading: false,
           };
 
-         this.state.interceptorId = axios.interceptors.response.use(response => {
-              return response
+          axios.interceptors.request.use(req => {
+              this.setState({loading: true});
+             return req;
+          });
+
+         axios.interceptors.response.use(res => {
+             this.setState({loading: false});
+             return res;
           }, error => {
               this.setState({error});
               throw error;
           });
       }
 
-      componentWillMount() {
-          axios.interceptors.response.eject(this.state.interceptorId);
-      }
-
       dismissError = () => {
-        this.setState({error: null});
+        this.setState({error: null})
+      };
+
+      dismissErrorClick = () => {
+          this.setState({error: null})
       };
 
       render() {
               return (
                   <Fragment>
-                  <WrappedComponent {...this.props}/>
+                      {this.state.loading && <Spinner/>}
+                      <WrappedComponent {...this.props}/>
                       <Modal show={!!this.state.error} close={this.dismissError}>
                           {this.state.error && String(this.state.error)}
+                          <button className="close-btn" onClick={this.dismissErrorClick}>Close</button>
                       </Modal>
                   </Fragment>
               )

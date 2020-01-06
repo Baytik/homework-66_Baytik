@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import './Content.css';
 import axiosAPI from '../../axiosAPI';
+import withErrorHandler from "../../HOC/withErrorHandler";
 
 class Contents extends Component {
 
@@ -34,4 +35,4 @@ class Contents extends Component {
     }
 }
 
-export default Contents;
+export default withErrorHandler(Contents, axiosAPI);

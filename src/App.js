@@ -5,9 +5,9 @@ import Contents from "./Components/Content/Contents";
 import Edit from "./Components/Edit/Edit";
 import {BrowserRouter, Route, Switch} from "react-router-dom";
 
-class App extends Component{
+class App extends Component {
   render() {
-    return(
+    return (
         <BrowserRouter>
         <Layout/>
         <Switch>
